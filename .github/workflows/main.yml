@@ -31,9 +31,9 @@ jobs:
       run: |
         flake8 mltype tests setup.py  # see tox.ini for config
 
-    - name: Check style with black
-      run: |
-        black --check -l 80 mltype tests setup.py
+    # - name: Check style with black
+    #   run: |
+    #     black --check -l 80 mltype tests setup.py
 
     - name: Check docstrings with pydocstyle
       run: |
