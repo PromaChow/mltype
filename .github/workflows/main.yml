@@ -2,7 +2,7 @@ name: mltype
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -19,11 +19,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install Python dependencies
-        run: 'python -m pip install --upgrade pip
+        run: "python -m pip install --upgrade pip
 
           pip install .[dev,mlflow]
 
-          '
+          "
       - id: measurement-4
         name: Record Measurement After Install Python dependencies
         uses: green-coding-solutions/eco-ci-energy-estimation@v4
@@ -32,9 +32,9 @@ jobs:
           label: Install Python dependencies
           task: get-measurement
       - name: Lint with flake8
-        run: 'flake8 mltype tests setup.py  # see tox.ini for config
+        run: "flake8 mltype tests setup.py  # see tox.ini for config
 
-          '
+          "
       - id: measurement-6
         name: Record Measurement After Lint with flake8
         uses: green-coding-solutions/eco-ci-energy-estimation@v4
@@ -43,9 +43,9 @@ jobs:
           label: Lint with flake8
           task: get-measurement
       - name: Check docstrings with pydocstyle
-        run: 'pydocstyle mltype
+        run: "pydocstyle mltype
 
-          '
+          "
       - id: measurement-8
         name: Record Measurement After Check docstrings with pydocstyle
         uses: green-coding-solutions/eco-ci-energy-estimation@v4
@@ -55,9 +55,9 @@ jobs:
           task: get-measurement
       - continue-on-error: true
         name: Test with pytest
-        run: 'pytest --color=yes  # see tox.ini for config
+        run: "pytest --color=yes  # see tox.ini for config
 
-          '
+          "
       - id: measurement-10
         name: Record Measurement After Test with pytest
         uses: green-coding-solutions/eco-ci-energy-estimation@v4
@@ -85,4 +85,4 @@ jobs:
         python-version:
           - 3.8
           - 3.9
-          - '3.10'
+          - "3.10"
